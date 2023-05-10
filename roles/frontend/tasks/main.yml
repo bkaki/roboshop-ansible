@@ -3,12 +3,12 @@
     name: nginx
     state: installed
 
-- name: clean old app content
-  ansible.builtin.copy:
+- name: copy roboshop config file
+  ansible.builtin.template:
     src: roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
 
-- name: Recursively remove directory
+- name: clean old app content
   ansible.builtin.file:
     path: /usr/share/nginx/html
     state: absent
